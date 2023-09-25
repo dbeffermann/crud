@@ -85,5 +85,3 @@ CREATE TABLE detalles_pedidos (
     producto_id int REFERENCES productos(id)
 );
 
-**Diagrama Entidad Relacion** 💻
-![Mi Imagen Local](modelo.png)
