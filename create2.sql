@@ -1,3 +1,41 @@
+-- Crear la tabla "cliente"
+CREATE TABLE cliente (
+    id serial PRIMARY KEY,
+    nombre text,
+    email text UNIQUE,
+    direccion text
+);
+
+-- Crear la tabla "categoria"
+CREATE TABLE categoria (
+    id serial PRIMARY KEY,
+    nombre text UNIQUE
+);
+
+-- Crear la tabla "producto"
+CREATE TABLE producto (
+    id serial PRIMARY KEY,
+    nombre text,
+    categoria_id int REFERENCES categoria(id)
+);
+
+-- Crear la tabla "pedidos"
+CREATE TABLE pedido (
+    id serial PRIMARY KEY,
+    fecha_hora timestamp,
+    cliente_id int REFERENCES cliente(id)
+);
+
+-- Crear la tabla "detalles_pedidos"
+CREATE TABLE detallepedido (
+    id serial PRIMARY KEY,
+    cantidad integer CHECK (cantidad >= 0),
+    precio_unitario numeric(10,2) CHECK (precio_unitario >= 0),
+    pedido_id int REFERENCES pedido(id),
+    producto_id int REFERENCES producto(id)
+);
+
+
 -- Insertar Datos en la Tabla de Categorías:
 INSERT INTO categoria (nombre) VALUES
 ('Electrónica'),

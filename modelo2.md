@@ -64,7 +64,7 @@ CREATE TABLE cliente (
 -- Crear la tabla "categoria"
 CREATE TABLE categoria (
     id serial PRIMARY KEY,
-    nombre text UNIQUE,
+    nombre text UNIQUE
 );
 
 -- Crear la tabla "producto"
