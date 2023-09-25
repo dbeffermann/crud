@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultados de Ventas</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Ventas por Mes</h1>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Mes</th>
+                    <th>Año</th>
+                    <th>Total Ventas</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for venta in ventas_mes %}
+                <tr>
+                    <td>{{ venta.0 }}</td>
+                    <td>{{ venta.1 }}</td>
+                    <td>{{ venta.2 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h1>Ventas por Producto</h1>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad Vendida</th>
+                    <th>Total Ventas</th>  
+                </tr>
+            </thead>
+            <tbody>
+                {% for venta in ventas_producto %}
+                <tr>
+                    <td>{{ venta.0 }}</td>
+                    <td>{{ venta.1 }}</td>
+                    <td>{{ venta.2 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h1>Ventas por Categoría</h1>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Categoría</th>
+                    <th>Cantidad Vendida</th>
+                    <th>Total Ventas</th>                   
+                </tr>
+            </thead>
+            <tbody>
+                {% for venta in ventas_categoria %}
+                <tr>
+                    <td>{{ venta.0 }}</td>
+                    <td>{{ venta.1 }}</td>
+                    <td>{{ venta.2 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
