@@ -16,27 +16,27 @@
 **Modelo Lógico** 📝
 
 - **Tablas:**
-  - Tabla `clientes`
+  - Tabla `cliente`
     - Campos: 
       - id (Clave Primaria)
       - nombre
       - email
       - direccion
-  - Tabla `categorias`
+  - Tabla `categoria`
     - Campos:
       - id (Clave Primaria)
       - nombre
-  - Tabla `productos`
+  - Tabla `producto`
     - Campos:
       - id (Clave Primaria)
       - nombre
       - categoria_id (Clave Foránea)
-  - Tabla `pedidos`
+  - Tabla `pedido`
     - Campos:
       - id (Clave Primaria)
       - fecha_hora
       - cliente_id (Clave Foránea)
-  - Tabla `detalles_pedidos`
+  - Tabla `detallepedido`
     - Campos:
       - id (Clave Primaria)
       - cantidad
@@ -50,7 +50,7 @@
 
 ```sql
 -- Crear la tabla "clientes"
-CREATE TABLE clientes (
+CREATE TABLE cliente (
     id serial PRIMARY KEY,
     nombre text,
     email text,
@@ -58,31 +58,31 @@ CREATE TABLE clientes (
 );
 
 -- Crear la tabla "categorias"
-CREATE TABLE categorias (
+CREATE TABLE categoria (
     id serial PRIMARY KEY,
     nombre text
 );
 
 -- Crear la tabla "productos"
-CREATE TABLE productos (
+CREATE TABLE producto (
     id serial PRIMARY KEY,
     nombre text,
-    categoria_id int REFERENCES categorias(id)
+    categoria_id int REFERENCES categoria(id)
 );
 
 -- Crear la tabla "pedidos"
-CREATE TABLE pedidos (
+CREATE TABLE pedido (
     id serial PRIMARY KEY,
     fecha_hora timestamp,
-    cliente_id int REFERENCES clientes(id)
+    cliente_id int REFERENCES cliente(id)
 );
 
 -- Crear la tabla "detalles_pedidos"
-CREATE TABLE detalles_pedidos (
+CREATE TABLE detallepedido (
     id serial PRIMARY KEY,
     cantidad integer,
     precio_unitario numeric(10,2),
-    pedido_id int REFERENCES pedidos(id),
-    producto_id int REFERENCES productos(id)
+    pedido_id int REFERENCES pedido(id),
+    producto_id int REFERENCES producto(id)
 );
 

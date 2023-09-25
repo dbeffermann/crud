@@ -1,5 +1,5 @@
 -- Crear la tabla "clientes"
-CREATE TABLE clientes (
+CREATE TABLE cliente (
     id serial PRIMARY KEY,
     nombre text,
     email text,
@@ -7,27 +7,27 @@ CREATE TABLE clientes (
 );
 
 -- Crear la tabla "categorias"
-CREATE TABLE categorias (
+CREATE TABLE categoria (
     id serial PRIMARY KEY,
     nombre text
 );
 
 -- Crear la tabla "productos"
-CREATE TABLE productos (
+CREATE TABLE producto (
     id serial PRIMARY KEY,
     nombre text,
     categoria_id int REFERENCES categorias(id)
 );
 
 -- Crear la tabla "pedidos"
-CREATE TABLE pedidos (
+CREATE TABLE pedido (
     id serial PRIMARY KEY,
     fecha_hora timestamp,
     cliente_id int REFERENCES clientes(id)
 );
 
 -- Crear la tabla "detalles_pedidos"
-CREATE TABLE detalles_pedidos (
+CREATE TABLE detallepedido (
     id serial PRIMARY KEY,
     cantidad integer,
     precio_unitario numeric(10,2),
