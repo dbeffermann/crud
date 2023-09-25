@@ -16,14 +16,14 @@ CREATE TABLE categoria (
 CREATE TABLE producto (
     id serial PRIMARY KEY,
     nombre text,
-    categoria_id int REFERENCES categorias(id)
+    categoria_id int REFERENCES categoria(id)
 );
 
 -- Crear la tabla "pedido"
 CREATE TABLE pedido (
     id serial PRIMARY KEY,
     fecha_hora timestamp,
-    cliente_id int REFERENCES clientes(id)
+    cliente_id int REFERENCES cliente(id)
 );
 
 -- Crear la tabla "detallepedido"
@@ -31,6 +31,6 @@ CREATE TABLE detallepedido (
     id serial PRIMARY KEY,
     cantidad integer,
     precio_unitario numeric(10,2),
-    pedido_id int REFERENCES pedidos(id),
-    producto_id int REFERENCES productos(id)
+    pedido_id int REFERENCES pedido(id),
+    producto_id int REFERENCES producto(id)
 );
