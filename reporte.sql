@@ -19,7 +19,9 @@ ORDER BY
 
 SELECT
     aplicacion1_producto.nombre AS producto,
-    SUM(aplicacion1_detallepedido.cantidad) AS cantidad_vendida
+    SUM(aplicacion1_detallepedido.cantidad) AS cantidad_vendida,
+    SUM(aplicacion1_detallepedido.cantidad * aplicacion1_detallepedido.precio_unitario) AS total_ventas
+
 FROM
     aplicacion1_detallepedido
 INNER JOIN
@@ -34,7 +36,8 @@ ORDER BY
 
 SELECT
     aplicacion1_categoria.nombre AS categoria,
-    SUM(aplicacion1_detallepedido.cantidad) AS cantidad_vendida
+    SUM(aplicacion1_detallepedido.cantidad) AS cantidad_vendida,
+    SUM(aplicacion1_detallepedido.cantidad * aplicacion1_detallepedido.precio_unitario) AS total_ventas
 FROM
     aplicacion1_detallepedido
 INNER JOIN
