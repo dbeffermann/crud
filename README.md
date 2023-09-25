@@ -49,7 +49,7 @@ Instrucciones para correr el proyecto:
             'PORT': '5433', # El puerto por defecto de PostgreSQL es 5432
         }
     }
-```
+    ```
 
 6. crear migraciones
 
