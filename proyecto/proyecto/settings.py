@@ -80,9 +80,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'aplicacion1', # la base de datos que creaste
-        'USER': 'postgres', # O el usuario que hayas creado
-        'PASSWORD': 'postgres', # O la contraseña que hayas creado
-        'HOST': 'localhost', # O la dirección IP de tu servidor PostgreSQL
+        'USER': 'postgres', # el usuario que hayas creado
+        'PASSWORD': 'postgres', # la contraseña que hayas creado
+        'HOST': 'localhost', # la dirección IP de tu servidor PostgreSQL
         'PORT': '5433', # El puerto por defecto de PostgreSQL es 5432
     }
 }

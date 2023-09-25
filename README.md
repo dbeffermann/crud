@@ -38,6 +38,19 @@ Instrucciones para correr el proyecto:
 
 5. Modificar parametros de coneccion a postgres en archivo settings.py
 
+    ```python
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'aplicacion1', # la base de datos que creaste
+            'USER': 'postgres', # el usuario que hayas creado
+            'PASSWORD': 'postgres', # la contraseña que hayas creado
+            'HOST': 'localhost', # la dirección IP de tu servidor PostgreSQL
+            'PORT': '5433', # El puerto por defecto de PostgreSQL es 5432
+        }
+    }
+```
+
 6. crear migraciones
 
     ```bash
