@@ -1,11 +1,86 @@
-**Modelo Lógico:**
+**Modelo Conceptual** 🌟
 
-El *modelo lógico* es una representación abstracta de la estructura de datos de tu aplicación sin preocuparse por los detalles técnicos de cómo se implementará físicamente en una base de datos concreta. Se centra en las entidades, relaciones y atributos de los datos sin considerar la optimización o la implementación en una base de datos específica.
+- **Entidades:**
+  - Cliente
+  - Categoría
+  - Producto
+  - Pedido
+  - Detalle de Pedido
 
-**Modelo Funcional:**
+- **Relaciones:**
+  - Un cliente puede realizar varios pedidos.
+  - Un pedido puede contener varios productos.
+  - Un producto pertenece a una categoría.
 
-El *modelo funcional* agrega detalles específicos sobre cómo se realizarán las operaciones en la base de datos, como consultas y transacciones. Describe las funciones que la base de datos debe admitir y cómo se deben ejecutar. A menudo se utiliza para planificar y diseñar las operaciones que se realizarán en la base de datos.
+**Modelo Lógico** 📝
 
-**Modelo Físico:**
+- **Tablas:**
+  - Tabla `clientes`
+    - Campos: 
+      - id (Clave Primaria)
+      - nombre
+      - email
+      - direccion
+  - Tabla `categorias`
+    - Campos:
+      - id (Clave Primaria)
+      - nombre
+  - Tabla `productos`
+    - Campos:
+      - id (Clave Primaria)
+      - nombre
+      - categoria_id (Clave Foránea)
+  - Tabla `pedidos`
+    - Campos:
+      - id (Clave Primaria)
+      - fecha_hora
+      - cliente_id (Clave Foránea)
+  - Tabla `detalles_pedidos`
+    - Campos:
+      - id (Clave Primaria)
+      - cantidad
+      - precio_unitario
+      - pedido_id (Clave Foránea)
+      - producto_id (Clave Foránea)
 
-El *modelo físico* se enfoca en la implementación concreta de la base de datos, incluyendo detalles sobre cómo se almacenarán los datos en el disco, la optimización de consultas y la configuración de índices y tablas. Define cómo se traducirá el modelo funcional en una base de datos real.
+**Modelo Físico** 💽
+
+- **Definiciones SQL:**
+
+```sql
+-- Crear la tabla "clientes"
+CREATE TABLE clientes (
+    id serial PRIMARY KEY,
+    nombre text,
+    email text,
+    direccion text
+);
+
+-- Crear la tabla "categorias"
+CREATE TABLE categorias (
+    id serial PRIMARY KEY,
+    nombre text
+);
+
+-- Crear la tabla "productos"
+CREATE TABLE productos (
+    id serial PRIMARY KEY,
+    nombre text,
+    categoria_id int REFERENCES categorias(id)
+);
+
+-- Crear la tabla "pedidos"
+CREATE TABLE pedidos (
+    id serial PRIMARY KEY,
+    fecha_hora timestamp,
+    cliente_id int REFERENCES clientes(id)
+);
+
+-- Crear la tabla "detalles_pedidos"
+CREATE TABLE detalles_pedidos (
+    id serial PRIMARY KEY,
+    cantidad integer,
+    precio_unitario numeric(10,2),
+    pedido_id int REFERENCES pedidos(id),
+    producto_id int REFERENCES productos(id)
+);
